@@ -204,7 +204,7 @@
         <button class="btn secondary" onclick="fillCoupangFromNaver()" title="쿠팡 판매가·배송비가 비어있는 제품에 한해 네이버 판매가·배송비 값을 그대로 채웁니다(이미 값이 있으면 건드리지 않음)">쿠팡가·배송비를 네이버와 동일하게 채우기</button>
         <button class="btn secondary" onclick="exportPricingExcel()">엑셀 다운로드</button>
       </div>
-      <div class="hint">온라인 판매가(네이버 · 쿠팡) 및 라이브 판매가 · 라이브창고 공급가, 거래처별 공급가(VAT포함) · 마진율, 거래처별 수익 · 수익율을 제품 하나의 행에서 함께 관리합니다. 라이브창고 수익율은 (라이브판매가 − 라이브창고공급가) ÷ 라이브판매가로 자동 계산됩니다. 거래처 목록 중 "쿠팡"의 공급가(VAT포함)는 (주)드림인터내셔널코퍼레이션의 공급가(VAT포함)과 동일하며, "마진율(%)" 칸만 판매수수료율 입력(기본값 8.57%, 직접 수정 가능)으로 대체됩니다. 수익 = (쿠팡가 × (1 − 판매수수료율)) − 공급가(VAT포함), 수익율 = 수익 ÷ (쿠팡가 × (1 − 판매수수료율))로 자동 계산됩니다. 그 외 각 거래처의 마진율은 (주)드림인터내셔널코퍼레이션은 원가 대비, 그 외 거래처(드림이 총판이므로)는 (주)드림인터내셔널코퍼레이션 공급가 대비 마진율이며, 마진율을 수정하면 공급가(VAT포함)가 자동으로 재계산되어 저장됩니다. 수익 = 공급가(VAT포함) − 기준원가, 수익율 = 수익 ÷ 공급가이며, 기준원가는 마진율과 동일한 기준을 사용합니다. "평균요율로 빈 칸 채우기"를 누르면 (주)드림인터내셔널코퍼레이션과 톡스메틱 두 열만 대상으로, 두 값이 모두 있는 제품들의 평균 비율을 구해 둘 중 하나만 비어있는 칸을 채웁니다. 두 값이 모두 비어있어 비교할 기준이 없는 제품은, 다른 제품들의 원가 대비 평균 요율을 이 제품의 원가에 적용해 대신 추정합니다(원가마저 없으면 건너뜁니다). 다른 거래처 열은 전혀 변경하지 않습니다. 자동으로 채워진 값은 <span style="color:#1d5fd6;font-weight:700;">파란색</span>으로 표시되며, 직접 수정하면 다시 검정색으로 바뀝니다.</div>
+      <div class="hint">온라인 판매가(네이버 · 쿠팡) 및 라이브 판매가 · 라이브창고 공급가, 거래처별 공급가(VAT포함) · 마진율, 거래처별 수익 · 수익율을 제품 하나의 행에서 함께 관리합니다. 라이브창고 수익율은 (라이브판매가 − 라이브창고공급가) ÷ 라이브판매가로 자동 계산됩니다. 거래처 목록 중 "쿠팡"은 공급가(VAT포함)를 직접 입력받지 않고, (주)드림인터내셔널코퍼레이션의 공급가(VAT포함, 기준원가)에 쿠팡 수수료율을 얹은 값(기준원가 × (1+수수료율))으로 자동 계산되며, "마진율(%)" 칸은 "수수료(%)" 입력(기본값 8.58%, 직접 수정 가능)으로, "쿠팡 판매가" 칸이 추가로 표시됩니다. 수익 = 쿠팡 판매가 − 공급가(수수료 포함), 수익율 = 수익 ÷ 쿠팡 판매가로 자동 계산됩니다. 그 외 각 거래처의 마진율은 (주)드림인터내셔널코퍼레이션은 원가 대비, 그 외 거래처(드림이 총판이므로)는 (주)드림인터내셔널코퍼레이션 공급가 대비 마진율이며, 마진율을 수정하면 공급가(VAT포함)가 자동으로 재계산되어 저장됩니다. 수익 = 공급가(VAT포함) − 기준원가, 수익율 = 수익 ÷ 공급가이며, 기준원가는 마진율과 동일한 기준을 사용합니다. "평균요율로 빈 칸 채우기"를 누르면 (주)드림인터내셔널코퍼레이션과 톡스메틱 두 열만 대상으로, 두 값이 모두 있는 제품들의 평균 비율을 구해 둘 중 하나만 비어있는 칸을 채웁니다. 두 값이 모두 비어있어 비교할 기준이 없는 제품은, 다른 제품들의 원가 대비 평균 요율을 이 제품의 원가에 적용해 대신 추정합니다(원가마저 없으면 건너뜁니다). 다른 거래처 열은 전혀 변경하지 않습니다. 자동으로 채워진 값은 <span style="color:#1d5fd6;font-weight:700;">파란색</span>으로 표시되며, 직접 수정하면 다시 검정색으로 바뀝니다.</div>
       <div class="toolbar" style="margin-top:8px;border-top:1px dashed var(--border);padding-top:10px;">
         <b style="font-size:12.5px;">거래처 마진율 일괄 적용</b>
         <select id="bulkMarginVendorSelect"></select>
@@ -219,7 +219,7 @@
         <select id="copySupplyTargetSelect"></select>
         <button class="btn" onclick="applyCopyVendorSupply()">현재 검색결과에 공급가 그대로 복사</button>
       </div>
-      <div class="hint">"거래처 공급가 복사"에서 기준 거래처와 적용 대상 거래처를 선택하면, 기준 거래처의 공급가(VAT포함)를 대상 거래처에 그대로 복사합니다. 마진율·수익·수익율은 공급가로부터 자동 계산되는 값이므로 함께 동일해집니다. (쿠팡은 공급가가 별도 저장되지 않고 항상 (주)드림인터내셔널코퍼레이션 공급가를 따르므로 선택 목록에서 제외됩니다.)</div>
+      <div class="hint">"거래처 공급가 복사"에서 기준 거래처와 적용 대상 거래처를 선택하면, 기준 거래처의 공급가(VAT포함)를 대상 거래처에 그대로 복사합니다. 마진율·수익·수익율은 공급가로부터 자동 계산되는 값이므로 함께 동일해집니다. (쿠팡은 공급가를 직접 입력받지 않고 (주)드림인터내셔널코퍼레이션 공급가에 쿠팡 수수료를 얹어 자동 계산하므로 선택 목록에서 제외됩니다.)</div>
       <div class="toolbar" style="margin-top:8px;border-top:1px dashed var(--border);padding-top:10px;">
         <b style="font-size:12.5px;">표시할 거래처 선택(다중)</b>
         <button class="btn small secondary" onclick="toggleAllPricingVendors(true)">전체 선택</button>
@@ -228,7 +228,7 @@
         <span class="muted" style="margin-left:6px;">| 판매채널:</span>
         <span id="pricingFieldGroupChecks"></span>
       </div>
-      <div class="hint">체크한 거래처의 공급가·마진율(또는 판매수수료율)·수익·수익율 열만 아래 표에 표시됩니다. (주)드림인터내셔널코퍼레이션은 체크되어 있으면 원가 바로 다음 열에 표시됩니다. "판매채널"의 네이버·쿠팡·라이브방송 체크를 해제하면 각 채널의 판매가/배송비 등 해당 열이 표에서 숨겨집니다. (판매채널의 "쿠팡"은 쿠팡 판매가·배송비 입력란이며, 거래처 목록의 "쿠팡"과는 다른 항목입니다.)</div>
+      <div class="hint">체크한 거래처의 공급가·마진율(또는 수수료)·수익·수익율 열만 아래 표에 표시됩니다. (주)드림인터내셔널코퍼레이션은 체크되어 있으면 원가 바로 다음 열에 표시됩니다. "판매채널"의 네이버·쿠팡·라이브방송 체크를 해제하면 각 채널의 판매가/배송비 등 해당 열이 표에서 숨겨집니다. (판매채널의 "쿠팡"은 쿠팡 판매가·배송비 입력란이며, 거래처 목록의 "쿠팡"과는 다른 항목입니다. 거래처 "쿠팡" 열의 "쿠팡 판매가"는 이 판매채널의 "쿠팡가"와 같은 값을 공유하므로, 어느 쪽에서 수정해도 서로 함께 반영됩니다. 공급가는 기준원가에 쿠팡 수수료를 얹어 자동 계산되며, 수수료(%)는 직접 입력해 수정할 수 있습니다.)</div>
       <div class="table-wrap" style="margin-top:10px;"><table id="pricingTable"></table></div>
     </div>
     <div class="card">
@@ -639,9 +639,11 @@ const STORAGE_KEY = 'klasagenToolData_v1';
 // 따라서 (주)드림인터내셔널코퍼레이션 외 거래처의 수익을 계산할 때는 원가(p.cost) 대신
 // (주)드림인터내셔널코퍼레이션에 대한 공급가(p.vendorSupply[MASTER_DISTRIBUTOR_NAME])를 원가로 사용합니다.
 const MASTER_DISTRIBUTOR_NAME = '(주)드림인터내셔널코퍼레이션';
-// 거래처 목록에 "쿠팡"이라는 이름으로 등록된 거래처는 다른 거래처와 달리 고정 공급가가 아니라
-// 판매수수료율을 반영한 정산 구조이므로, 판매가·공급가·수익 관리 표에서 이 거래처의 "마진율(%)" 열만
-// 판매수수료율 입력으로 대체합니다(공급가(VAT포함)는 다른 거래처와 동일하게 드림인터내셔널코퍼레이션 공급가와 같음).
+// 거래처 목록에 "쿠팡"이라는 이름으로 등록된 거래처는 다른 거래처와 달리 고정 공급가를 직접 입력받지
+// 않습니다. 판매가·공급가·수익 관리 표에서 이 거래처의 공급가(VAT포함)는 (주)드림인터내셔널코퍼레이션
+// 공급가(기준원가)에 쿠팡 수수료를 얹은 값(기준원가 × (1+수수료율))으로 자동 계산되고, "마진율(%)" 열은
+// "수수료(%)" 입력으로 대체됩니다. 수익 = 쿠팡 판매가 − 공급가(수수료 포함), 수익율 = 수익 ÷ 쿠팡 판매가로
+// 계산합니다. 쿠팡 판매가(p.coupangPrice)는 [판매채널]의 "쿠팡가" 입력란과 같은 값을 공유합니다.
 const COUPANG_VENDOR_NAME = '쿠팡';
 // 제품 카테고리 초기 기본 목록입니다(최초 실행 시 DATA.productCategories로 복사되어 사용되며,
 // 이후에는 [제품 관리]의 "카테고리 관리"에서 사용자가 직접 추가·이름변경·삭제·순서변경합니다).
@@ -1574,8 +1576,10 @@ function loadData(){
   });
   // 평균요율로 자동 채워진 공급가를 표시상 구분(파란색)하기 위한 표시(vendorSupplyAuto)가 없으면 채워줌
   DATA.products.forEach(p=>{ if(!p.vendorSupplyAuto) p.vendorSupplyAuto = {}; });
-  // 쿠팡 판매수수료율이 없으면 기본값(8.57%)을 채워줌(이전 버전 데이터 호환)
-  DATA.products.forEach(p=>{ if(p.coupangFeeRate===undefined || p.coupangFeeRate===null) p.coupangFeeRate = 0.0857; });
+  // 쿠팡 판매수수료율이 없으면 기본값(8.58%)을 채워줌(이전 버전 데이터 호환). 예전 기본값(8.57%)이
+  // 그대로 남아있는 경우도 새 기본값(8.58%)으로 함께 보정합니다(개별 제품에서 직접 다른 값으로
+  // 수정한 뒤에는 8.57%와 더 이상 일치하지 않으므로 이 보정 대상에서 자동으로 빠집니다).
+  DATA.products.forEach(p=>{ if(p.coupangFeeRate===undefined || p.coupangFeeRate===null || p.coupangFeeRate===0.0857) p.coupangFeeRate = 0.0858; });
   // 제품 카테고리 필드가 없으면 빈 값으로 채워줌(이전 버전 데이터 호환)
   DATA.products.forEach(p=>{ if(p.category===undefined) p.category = ''; });
   // 제품 구분명 필드가 없으면 빈 값으로 채워줌(이전 버전 데이터 호환)
@@ -1940,15 +1944,16 @@ function exportPricingExcel(){
     };
     DATA.vendors.forEach(v=>{
       if(v.name===COUPANG_VENDOR_NAME){
-        // 쿠팡의 공급가(VAT포함)는 (주)드림인터내셔널코퍼레이션의 공급가(VAT포함)과 동일합니다.
-        // 수익 = (쿠팡가×(1−판매수수료율)) − 공급가(VAT포함), 수익율 = 수익 ÷ (쿠팡가×(1−판매수수료율)).
-        const coupangSupply = costBasisForVendor(p, v.name);
+        // 쿠팡의 공급가(VAT포함) = (주)드림인터내셔널코퍼레이션 공급가(기준원가) × (1+쿠팡 수수료율).
+        // 수익 = 쿠팡 판매가 − 공급가(수수료 포함), 수익율 = 수익 ÷ 쿠팡 판매가.
+        const baseSupply = costBasisForVendor(p, v.name);
         const feeRate = (p.coupangFeeRate!=null && isFinite(p.coupangFeeRate)) ? p.coupangFeeRate : null;
-        const coupangNetRevenue = (p.coupangPrice!=null && feeRate!=null) ? p.coupangPrice*(1-feeRate) : null;
+        const coupangSupply = (baseSupply!=null) ? baseSupply*(1+(feeRate||0)) : null;
         let coupangProfit = null, coupangProfitRate = null;
-        if(coupangNetRevenue!=null && coupangSupply!=null){ coupangProfit = coupangNetRevenue-coupangSupply; coupangProfitRate = coupangNetRevenue!==0 ? coupangProfit/coupangNetRevenue : null; }
+        if(p.coupangPrice!=null && coupangSupply!=null){ coupangProfit = p.coupangPrice-coupangSupply; coupangProfitRate = p.coupangPrice!==0 ? coupangProfit/p.coupangPrice : null; }
         row[`${v.name} 공급가(VAT포함)`] = coupangSupply ?? '';
-        row[`${v.name} 판매수수료율(%)`] = feeRate!=null ? (feeRate*100).toFixed(2) : '';
+        row[`${v.name} 수수료(%)`] = feeRate!=null ? (feeRate*100).toFixed(2) : '';
+        row[`${v.name} 판매가`] = p.coupangPrice ?? '';
         row[`${v.name} 수익`] = coupangProfit!=null ? Math.round(coupangProfit) : '';
         row[`${v.name} 수익율`] = coupangProfitRate!=null ? (coupangProfitRate*100).toFixed(1)+'%' : '';
         return;
@@ -2926,7 +2931,7 @@ function addProduct(){
   const nextNo = DATA.products.reduce((max,p)=> Math.max(max, typeof p.orderNo==='number'?p.orderNo:0), 0) + 1;
   const p = {
     id: uid('P'), orderNo: nextNo, category:'', subCategory:'', mainImage:'', brand:'클라세이젠', name:'새 제품', capacity:'', cost:null,
-    naverPrice:null, naverShipping:3000, coupangPrice:null, coupangShipping:null, coupangFeeRate:0.0857,
+    naverPrice:null, naverShipping:3000, coupangPrice:null, coupangShipping:null, coupangFeeRate:0.0858,
     livePrice:null, liveWarehouseSupply:null, liveWarehouseRate:null,
     vendorSupply:{}, vendorSupplyAuto:{}, stock:0, cartonQty:null, expiryDate:'', productLink:'',
     competitorNote:'', onlineCurrentPrice:null, onlineProposedPrice:null, notes:''
@@ -3003,28 +3008,31 @@ function toggleAllPricingVendors(checked){
   }
   renderPricing();
 }
-// 거래처 1곳의 2행짜리 서브헤더(<th> 4개)를 반환합니다. 쿠팡은 판매수수료율(%) 라벨을 사용합니다.
+// 거래처 1곳의 2행짜리 서브헤더를 반환합니다(다른 거래처는 <th> 4개, 쿠팡은 "수수료(%)"와 "쿠팡 판매가"가
+// 추가되어 <th> 5개입니다).
 function renderPricingVendorSubHeader(v){
   return v.name===COUPANG_VENDOR_NAME
-    ? `<th class="vendor-col-group">공급가(VAT포함)</th><th class="vendor-col-group">판매수수료율(%)</th><th class="vendor-col-group">수익</th><th class="vendor-col-group">수익율</th>`
+    ? `<th class="vendor-col-group">공급가(VAT포함)</th><th class="vendor-col-group">수수료(%)</th><th class="vendor-col-group">쿠팡 판매가</th><th class="vendor-col-group">수익</th><th class="vendor-col-group">수익율</th>`
     : `<th class="vendor-col-group">공급가(VAT포함)</th><th class="vendor-col-group">마진율(%)</th><th class="vendor-col-group">수익</th><th class="vendor-col-group">수익율</th>`;
 }
-// 제품 p, 거래처 v 1곳에 대한 본문 셀(<td> 4개: 공급가/마진율(또는 판매수수료율)/수익/수익율)을 반환합니다.
+// 제품 p, 거래처 v 1곳에 대한 본문 셀을 반환합니다(다른 거래처는 <td> 4개: 공급가/마진율/수익/수익율,
+// 쿠팡은 <td> 5개: 공급가(수수료 포함)/수수료/쿠팡 판매가/수익/수익율).
 function renderPricingVendorCells(p, v){
   if(v.name===COUPANG_VENDOR_NAME){
-    // 쿠팡의 공급가(VAT포함)는 (주)드림인터내셔널코퍼레이션의 공급가(VAT포함)과 동일합니다(다른 거래처와 같은 기준원가).
-    // 쿠팡가(쿠팡에서의 판매가)에서 쿠팡 판매수수료율(%)을 뺀 실수령액을 매출로 보고,
-    // 수익 = (쿠팡가×(1−판매수수료율)) − 공급가(VAT포함), 수익율 = 수익 ÷ (쿠팡가×(1−판매수수료율)).
-    const coupangSupply = costBasisForVendor(p, v.name); // = 드림인터내셔널코퍼레이션 공급가(VAT포함)
+    // 쿠팡의 공급가(VAT포함) = (주)드림인터내셔널코퍼레이션 공급가(기준원가) × (1+쿠팡 수수료율).
+    // 즉 기준원가에 쿠팡 수수료를 얹은 값을 공급가로 사용합니다(직접 입력하지 않고 자동 계산되는 값).
+    // 수익 = 쿠팡 판매가 − 공급가(수수료 포함), 수익율 = 수익 ÷ 쿠팡 판매가.
+    const baseSupply = costBasisForVendor(p, v.name); // = 드림인터내셔널코퍼레이션 공급가(VAT포함, 기준원가)
     const feeRate = (p.coupangFeeRate!=null && isFinite(p.coupangFeeRate)) ? p.coupangFeeRate : null;
-    const coupangNetRevenue = (p.coupangPrice!=null && feeRate!=null) ? p.coupangPrice*(1-feeRate) : null;
+    const coupangSupply = (baseSupply!=null) ? baseSupply*(1+(feeRate||0)) : null;
     let coupangProfit = null, coupangProfitRate = null;
-    if(coupangNetRevenue!=null && coupangSupply!=null){
-      coupangProfit = coupangNetRevenue - coupangSupply;
-      coupangProfitRate = coupangNetRevenue!==0 ? coupangProfit/coupangNetRevenue : null;
+    if(p.coupangPrice!=null && coupangSupply!=null){
+      coupangProfit = p.coupangPrice - coupangSupply;
+      coupangProfitRate = p.coupangPrice!==0 ? coupangProfit/p.coupangPrice : null;
     }
     return `<td class="vendor-col-group muted">${fmtIntColor(coupangSupply)}</td>`
       + `<td class="vendor-col-group">${feeRateInput(p.id, feeRate)}</td>`
+      + `<td class="vendor-col-group">${numInput(p.coupangPrice, `updateProduct('${p.id}','coupangPrice',this.value)`, 85)}</td>`
       + `<td class="vendor-col-group">${fmtIntColor(coupangProfit)}</td>`
       + `<td class="vendor-col-group">${fmtPctColor(coupangProfitRate)}</td>`;
   }
@@ -3094,7 +3102,7 @@ function renderPricing(){
     ${showNaver ? `<th colspan="2" class="field-col-group">네이버</th>` : ''}
     ${showCoupangField ? `<th colspan="2" class="field-col-group">쿠팡</th>` : ''}
     ${showLive ? `<th colspan="4" class="field-col-group">라이브방송</th>` : ''}
-    ${otherVendors.map(v=>`<th colspan="4" class="vendor-col-group">${esc(v.name)}</th>`).join('')}
+    ${otherVendors.map(v=>`<th colspan="${v.name===COUPANG_VENDOR_NAME?5:4}" class="vendor-col-group">${esc(v.name)}</th>`).join('')}
   </tr><tr>
     ${dreamVendor ? renderPricingVendorSubHeader(dreamVendor) : ''}
     ${showNaver ? `<th class="field-col-group">네이버가</th><th class="field-col-group">네이버배송비</th>` : ''}
@@ -3784,6 +3792,22 @@ function costBasisForVendor(product, vendorName){
   const distSupply = product.vendorSupply ? product.vendorSupply[MASTER_DISTRIBUTOR_NAME] : null;
   return (distSupply!=null) ? num(distSupply) : null;
 }
+// 발주처(거래처) 이름으로 "그 발주처에 대한 공급가(VAT포함)"를 조회합니다. 거래내역 등록/수정과 발주서
+// 매칭에서 공급가를 자동으로 채울 때 공통으로 사용합니다. "쿠팡"은 [판매가·공급가·수익 관리]에 공급가를
+// 직접 등록하지 않고, (주)드림인터내셔널코퍼레이션 공급가(기준원가)에 쿠팡 수수료를 얹어 자동 계산하므로
+// (renderPricingVendorCells의 쿠팡 분기와 동일한 계산) 여기서도 그 계산을 그대로 따라야 공급가가 비어
+// 보이지 않습니다. 그 외 거래처는 product.vendorSupply에 등록된 값을 그대로 사용합니다.
+function vendorSupplyForOrderer(product, ordererName){
+  if(!product || !ordererName) return null;
+  if(ordererName === COUPANG_VENDOR_NAME){
+    const base = costBasisForVendor(product, ordererName);
+    if(base==null) return null;
+    const feeRate = (product.coupangFeeRate!=null && isFinite(product.coupangFeeRate)) ? product.coupangFeeRate : 0;
+    return base*(1+feeRate);
+  }
+  const v = product.vendorSupply ? product.vendorSupply[ordererName] : null;
+  return (v!=null) ? num(v) : null;
+}
 
 /* ================== 거래내역 관리 ================== */
 function fillProductSelect(){
@@ -3814,7 +3838,7 @@ function updateTxSupplyWarning(){
   const sel = document.getElementById('txProduct');
   const p = sel ? findProduct(sel.value) : null;
   const orderer = getOrdererValue();
-  const ordererSupply = (p && p.vendorSupply && orderer) ? p.vendorSupply[orderer] : null;
+  const ordererSupply = (p && orderer) ? vendorSupplyForOrderer(p, orderer) : null;
   warningEl.style.display = (p && orderer && ordererSupply==null) ? '' : 'none';
 }
 // 같은 제품에 대해, matchField(공급사 또는 발주처)가 matchValue와 일치하는 거래 중 가장 최근(날짜 기준)
@@ -3861,7 +3885,7 @@ function updateTxPriceChoice(){
   supplyEl.innerHTML = '';
   supplyEl.style.display = 'none';
   if(p && orderer){
-    const currentSupply = (p.vendorSupply && p.vendorSupply[orderer]!=null) ? num(p.vendorSupply[orderer]) : null;
+    const currentSupply = vendorSupplyForOrderer(p, orderer);
     const lastInfo = lastTxValueInfo(p.id, 'orderer', orderer, 'supplyPrice', editingTxId);
     if(currentSupply!=null && lastInfo && lastInfo.price!=null && currentSupply!==lastInfo.price){
       supplyEl.innerHTML = `공급가가 등록정보와 다릅니다:
@@ -3892,7 +3916,8 @@ function onTxProductChange(){
   const purchaseCost = supplierCost!=null ? supplierCost : (orderer ? (costBasisForVendor(p, orderer) ?? p.cost) : p.cost);
   document.getElementById('txPurchase').value = purchaseCost!=null ? fmt(purchaseCost) : '';
   txPurchaseManuallyEdited = false; // 방금 자동으로 채운 값이므로 "수동 입력" 상태는 아닙니다.
-  const supply = (p.vendorSupply && orderer && p.vendorSupply[orderer]!=null) ? p.vendorSupply[orderer] : (p.vendorSupply ? Object.values(p.vendorSupply).find(v=>v!=null) : null);
+  const ordererVal = orderer ? vendorSupplyForOrderer(p, orderer) : null;
+  const supply = ordererVal!=null ? ordererVal : (p.vendorSupply ? Object.values(p.vendorSupply).find(v=>v!=null) : null);
   document.getElementById('txSupply').value = supply!=null ? fmt(supply) : '';
   updateTxSupplyWarning();
   updateTxPriceChoice();
@@ -6132,7 +6157,8 @@ function applyOrderMatchAutoFill(idx){
     if(purchaseCost!=null) purchaseEl.value = purchaseCost;
   }
   if(supplyEl && !supplyEl.value.trim()){
-    const supply = (p.vendorSupply && orderer && p.vendorSupply[orderer]!=null) ? p.vendorSupply[orderer] : (p.vendorSupply ? Object.values(p.vendorSupply).find(v=>v!=null) : null);
+    const ordererVal = orderer ? vendorSupplyForOrderer(p, orderer) : null;
+    const supply = ordererVal!=null ? ordererVal : (p.vendorSupply ? Object.values(p.vendorSupply).find(v=>v!=null) : null);
     if(supply!=null) supplyEl.value = supply;
   }
   updateOrderMatchTotalSupply(idx); // 매입가/공급가 자동 채움 후 "전체 공급가" 열도 함께 갱신합니다.
@@ -6216,7 +6242,7 @@ function commitOrderImport(){
     if(selVal === '__new__'){
       const np = {
         id: uid('P'), category:'', subCategory:'', mainImage:'', brand:'클라세이젠', name: r.productNameRaw, capacity:'', cost:null,
-        naverPrice:null, naverShipping:3000, coupangPrice:null, coupangShipping:null, coupangFeeRate:0.0857,
+        naverPrice:null, naverShipping:3000, coupangPrice:null, coupangShipping:null, coupangFeeRate:0.0858,
         livePrice:null, liveWarehouseSupply:null, liveWarehouseRate:null,
         vendorSupply:{}, stock:0, cartonQty:null, expiryDate:'', productLink:'',
         competitorNote:'', onlineCurrentPrice:null, onlineProposedPrice:null,
