@@ -416,6 +416,7 @@
       <div class="toolbar" style="margin-top:2px;">
         <label><input type="checkbox" id="statsPurchaseMismatchOnlyCheck" onchange="toggleStatsPurchaseMismatchOnly(this.checked)"> 매입가 불일치 거래만 보기(두 표 공통 적용)</label>
         <span id="statsPurchaseMismatchCount" class="muted"></span>
+        <button class="btn secondary" onclick="exportStatsPurchaseDetailExcel()">엑셀 다운로드</button>
       </div>
       <div class="table-wrap"><table id="statsPurchaseDetailTable"></table></div>
     </div>
@@ -2028,10 +2029,12 @@ function statsGroupRows(list, keyFn, keyLabel, sortMode){
     };
   });
 }
-function exportStatsExcel(){
+// [통계] 현재 화면에 적용된 기간(statsDateFrom~To)·발주처/공급사/월 클릭 필터를 그대로 반영한 거래
+// 목록을 반환합니다. exportStatsExcel과 매입내역서/매출내역서 개별 엑셀 다운로드가 공통으로 씁니다.
+function statsCurrentFilteredTx(){
   const from = document.getElementById('statsDateFrom').value;
   const to = document.getElementById('statsDateTo').value;
-  const list = DATA.transactions.filter(t=>{
+  return DATA.transactions.filter(t=>{
     if(from && t.date < from) return false;
     if(to && t.date > to) return false;
     // 화면에서 발주처/공급사/월 클릭 필터가 켜져있으면 엑셀도 동일하게 필터링된 데이터로 내보냅니다.
@@ -2042,9 +2045,18 @@ function exportStatsExcel(){
     if(statsFilterTouched.month && !statsFilter.month.has((t.date||'').slice(0,7))) return false;
     return true;
   });
+}
+// [통계] 위 거래 목록에 "매입가 불일치만 보기" 체크박스 상태를 반영합니다. 매입내역서/매출내역서
+// 표(화면 및 엑셀 다운로드 모두)가 공통으로 씁니다.
+function statsCurrentDetailList(){
+  const list = statsCurrentFilteredTx();
+  return statsPurchaseMismatchOnly ? list.filter(txDreamPurchaseMismatch) : list;
+}
+function exportStatsExcel(){
+  const list = statsCurrentFilteredTx();
   // 화면에서 "매입가 불일치만 보기"가 켜져 있으면, 매입내역서/매출내역서 엑셀 시트도 화면과 동일하게
   // 불일치 거래만 내보냅니다(다른 시트는 영향받지 않습니다).
-  const detailList = statsPurchaseMismatchOnly ? list.filter(txDreamPurchaseMismatch) : list;
+  const detailList = statsCurrentDetailList();
   downloadWorkbookSheets([
     { name:'업체별', rows: statsGroupRows(list, t=>t.orderer, '발주처') },
     { name:'공급사별', rows: statsGroupRows(list, t=>t.supplier, '공급사') },
@@ -2054,6 +2066,12 @@ function exportStatsExcel(){
     { name:'매입내역서', rows: statsDetailRows(detailList, true) },
     { name:'매출내역서', rows: statsDetailRows(detailList, false) }
   ], '통계');
+}
+// [통계] 매입내역서 카드의 "엑셀 다운로드" 버튼: 현재 화면에 표시된 매입내역서 표(선택된 기간·
+// 발주처/공급사/월 필터·"매입가 불일치 거래만 보기" 상태를 모두 반영)를 매입내역서 한 시트짜리
+// 엑셀 파일로 저장합니다.
+function exportStatsPurchaseDetailExcel(){
+  downloadSheet('매입내역서', statsDetailRows(statsCurrentDetailList(), true), '매입내역서');
 }
 // [통계] "매출내역서"/"매입내역서"(및 그 엑셀 내보내기)에 쓰는 건별 상세 행입니다.
 // - 매출내역서(isPurchase=false): "(주)드림인터내셔널코퍼레이션 → 거래처" 매출 흐름입니다. 발주처=거래처,
